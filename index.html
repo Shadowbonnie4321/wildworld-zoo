@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08764b">
+  <meta name="description" content="WildWorld Zoo — A Better World For All Living Creatures. Discover our story, conservation mission and visitor experience.">
+  <title>WildWorld Zoo | A Better World For All Living Creatures</title>
+
+  <style>
+    :root {
+      --green: #08764b;
+      --deep-green: #064b35;
+      --lime: #b8e85c;
+      --cream: #fffdf2;
+      --orange: #ff9b45;
+      --text: #203b30;
+      --muted: #64766b;
+      --white: #ffffff;
+      --shadow: 0 12px 35px rgba(15, 70, 46, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; }
+
+    .container {
+      width: min(1120px, 91%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 253, 242, .96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 15px #173e2510;
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.35rem;
+      color: var(--deep-green);
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      border-radius: 50% 50% 45% 45%;
+      font-size: 30px;
+    }
+
+    nav {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      padding: 8px 11px;
+      border-radius: 20px;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    nav a:hover, nav a:focus-visible {
+      background: var(--lime);
+      outline: none;
+    }
+
+    .hero {
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(3, 47, 33, .90), rgba(3, 47, 33, .25)),
+        url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      padding: 85px 0;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: .8rem;
+      font-weight: 900;
+      color: var(--lime);
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 1.03;
+      margin: 16px 0;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      color: var(--deep-green);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin: 0 0 18px;
+    }
+
+    h3 { line-height: 1.25; }
+
+    .hero p {
+      max-width: 590px;
+      font-size: 1.12rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      border-radius: 30px;
+      padding: 13px 21px;
+      background: var(--lime);
+      color: #173e28;
+      font-weight: 900;
+      font-size: .95rem;
+      transition: transform .2s, filter .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); filter: brightness(.96); }
+    .button.secondary { background: white; }
+    .button.orange { background: var(--orange); }
+
+    section { padding: 76px 0; }
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+
+    .section-intro p { color: var(--muted); }
+
+    .welcome-grid, .story-grid, .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      align-items: center;
+    }
+
+    .photo {
+      width: 100%;
+      min-height: 300px;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .soft-card {
+      background: white;
+      padding: 28px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .pill {
+      display: inline-block;
+      background: #e7f5d2;
+      color: var(--deep-green);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+    .tropical {
+      background:
+        radial-gradient(circle at 90% 10%, #b8e85c80, transparent 28%),
+        linear-gradient(140deg, #e4f6c8, #fff4d9);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      padding: 25px;
+      background: white;
+      border-radius: 20px;
+      border-top: 5px solid var(--lime);
+      box-shadow: var(--shadow);
+    }
+
+    .feature .emoji { font-size: 2.2rem; }
+
+    .timeline {
+      border-left: 3px solid var(--lime);
+      margin-left: 8px;
+      padding-left: 24px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 28px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 7px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--green);
+      border: 3px solid var(--cream);
+    }
+
+    .timeline-item h3 { margin: 0 0 6px; color: var(--deep-green); }
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .naruto {
+      background: var(--deep-green);
+      color: white;
+    }
+
+    .naruto h2 { color: white; }
+    .naruto .section-intro p { color: #e2f0e5; }
+
+    .naruto-card {
+      background: #ffffff12;
+      border: 1px solid #ffffff30;
+      border-radius: 24px;
+      padding: 30px;
+    }
+
+    .naruto-card p { color: #edf7ef; }
+
+    .note {
+      border-left: 4px solid var(--orange);
+      padding: 12px 16px;
+      background: #ffffff0d;
+      font-size: .92rem;
+    }
+
+    .empty-space {
+      min-height: 150px;
+      border: 2px dashed #b8c8b7;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      color: #718275;
+      background: #ffffff70;
+    }
+
+    .staff-card {
+      text-align: center;
+      background: white;
+      padding: 30px 22px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .staff-icon {
+      margin: auto;
+      width: 80px;
+      height: 80px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #e4f6c8;
+      font-size: 2.2rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .news-card div { padding: 22px; }
+
+    .youtube-band {
+      background: linear-gradient(110deg, #ffdfab, #ffece0);
+      border-radius: 26px;
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      background: #033e2b;
+      color: #e8f6e9;
+      padding: 45px 0 25px;
+    }
+
+    footer a { color: #d8f49c; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-links { display: grid; gap: 8px; }
+    .copyright {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid #ffffff25;
+      font-size: .85rem;
+      color: #c1d7c7;
+    }
+
+    @media (max-width: 760px) {
+      .nav { justify-content: center; }
+      .brand { width: 100%; justify-content: center; }
+      nav { justify-content: center; }
+      nav a { font-size: .82rem; padding: 7px 8px; }
+      .hero { min-height: 470px; }
+      .welcome-grid, .story-grid, .two-column { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+      .photo { min-height: 230px; }
+      .youtube-band { padding: 25px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="WildWorld Zoo homepage">
+        <span class="logo" aria-hidden="true">🦌</span>
+        <span>WildWorld Zoo</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#story">Our Story</a>
+        <a href="#animals">Animals</a>
+        <a href="#conservation">Conservation</a>
+        <a href="#staff">Staff</a>
+        <a href="#youtube">YouTube</a>
+        <a href="#news">Zoo News</a>
+        <a href="#visit">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">Discover • Connect • Protect</span>
+        <h1>Welcome to<br>WildWorld Zoo!</h1>
+        <p>
+          A place inspired by wildlife, shaped by imagination and driven
+          by a love for all living creatures.
+        </p>
+        <h3>A Better World For All Living Creatures</h3>
+        <div class="buttons">
+          <a class="button" href="#story">Discover Our Story</a>
+          <a class="button secondary" href="#conservation">Our Mission</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container welcome-grid">
+        <div>
+          <span class="pill">WELCOME TO OUR WORLD</span>
+          <h2>Every great zoo has a story.</h2>
+          <p>
+            WildWorld Zoo is a Planet Zoo 2 project built around a simple
+            idea: create an immersive, naturalistic zoo that celebrates
+            wildlife and inspires people to care about the living world.
+          </p>
+          <p>
+            From carefully planned habitats to our journey through earlier
+            zoo projects, this is a world that continues to grow.
+          </p>
+          <a class="button" href="#story">Read Our Journey</a>
+        </div>
+        <img class="photo"
+          src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=85"
+          alt="Wild deer standing in a green woodland">
+      </div>
+    </section>
+
+    <section class="tropical" id="conservation">
+      <div class="container">
+        <div class="section-intro">
+          <span class="pill">OUR PURPOSE</span>
+          <h2>A better world for all living creatures.</h2>
+          <p>
+            Our fictional zoo project is inspired by three important
+            principles: learning about wildlife, respecting animal welfare,
+            and understanding the natural world.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="emoji">🌱</div>
+            <h3>Protect Nature</h3>
+            <p>
+              Celebrate habitats and explore why healthy ecosystems matter
+              to wildlife and people.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="emoji">📚</div>
+            <h3>Learn Together</h3>
+            <p>
+              Make wildlife education welcoming, interesting and accessible
+              to visitors of different ages.
+            </p>
+          </article>
+          <article class="feature">
+            <div class="emoji">💚</div>
+            <h3>Care for Animals</h3>
+            <p>
+              Put animal welfare and responsible care at the heart of our
+              zoo-building philosophy.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container story-grid">
+        <div>
+          <span class="pill">THE JOURNEY SO FAR</span>
+          <h2>From one zoo idea to another.</h2>
+          <p>
+            WildWorld Zoo didn't appear out of nowhere. It grew from a
+            series of creative projects, experiments and new ideas in
+            Planet Zoo.
+          </p>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <h3>Finale Zoo</h3>
+              <p>
+                A major Planet Zoo 1 project that reached its finale and
+                became part of the journey toward new zoo-building ideas.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <h3>Cedar Valley Zoo</h3>
+              <p>
+                An early Planet Zoo 2 project that explored a new zoo
+                identity, website ideas and animal-care storytelling.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <h3>Cascadia Wildlife Sanctuary</h3>
+              <p>
+                A concept inspired by temperate woodland landscapes,
+                naturalistic habitats and wildlife conservation.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <h3>Wildhaven Zoo</h3>
+              <p>
+                A realistic woodland zoo project that helped develop ideas
+                for immersive habitats and a connected zoo website.
+              </p>
+            </article>
+
+            <article class="timeline-item">
+              <h3>WildWorld Zoo — Today</h3>
+              <p>
+                A fresh chapter: a zoo project designed to bring together
+                wildlife, creativity, education and a love of animals.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div>
+          <img class="photo"
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=85"
+            alt="Sunlight filtering through a green forest">
+          <div class="soft-card" style="margin-top:18px">
+            <h3>One journey. Many beginnings.</h3>
+            <p>
+              Every project taught us something new. WildWorld Zoo is the
+              next step, with its own identity and room to grow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="naruto">
+      <div class="container">
+        <div class="section-intro">
+          <span class="eyebrow">A SPECIAL STORY</span>
+          <h2>Naruto: the aardvark we never gave up on.</h2>
+          <p>
+            Some animals become part of a zoo's history in a way that goes
+            far beyond a habitat. Naruto's story is one of the personal
+            stories behind this journey.
+          </p>
+        </div>
+
+        <div class="naruto-card">
+          <span class="pill">NARUTO'S STORY</span>
+          <h3>A fight, a loss we thought we'd faced, and an unexpected truth.</h3>
+          <p>
+            Naruto is an aardvark whose story includes a battle with cancer.
+            At one point, we thought he had died. But his story did not end
+            where we believed it had.
+          </p>
+          <p>
+            This page is reserved for the full story of what happened to
+            Naruto, told in the right order and with the details that make
+            his journey special.
+          </p>
+          <div class="note">
+            Naruto's full timeline is still to be added. The details of
+            his diagnosis, what happened next and how we discovered he was
+            alive will be included when his story is ready.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANIMALS SECTION INTENTIONALLY LEFT BLANK.
+         Add animal content here whenever you are ready. -->
+    <section id="animals" aria-label="Animals">
+    </section>
+
+    <section id="staff" class="tropical">
+      <div class="container">
+        <div class="section-intro">
+          <span class="pill">THE TEAM</span>
+          <h2>Meet the people behind the zoo.</h2>
+          <p>
+            This section is ready for your real or fictional zoo staff.
+            Profiles can be added as your project develops.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="staff-card">
+            <div class="staff-icon">🌿</div>
+            <h3>Zoo Management</h3>
+            <p>Planning, development and the overall zoo vision.</p>
+          </article>
+          <article class="staff-card">
+            <div class="staff-icon">🩺</div>
+            <h3>Veterinary Team</h3>
+            <p>Animal health, veterinary care and welfare.</p>
+          </article>
+          <article class="staff-card">
+            <div class="staff-icon">🐾</div>
+            <h3>Animal Care Team</h3>
+            <p>Daily care, enrichment and habitat management.</p>
+          </article>
+        </div>
+        <p style="margin-top:20px;color:#64766b">
+          These are role categories, not named staff profiles. Names and
+          biographies can be added later.
+        </p>
+      </div>
+    </section>
+
+    <section id="youtube">
+      <div class="container">
+        <div class="youtube-band">
+          <div>
+            <span class="pill">WATCH THE JOURNEY</span>
+            <h2 style="margin-top:12px">WildWorld Zoo on YouTube</h2>
+            <p>
+              Follow the builds, habitat tours and progress as the zoo
+              comes to life.
+            </p>
+            <p><strong>Channel:</strong> TheShadowBonnie4321</p>
+          </div>
+          <a class="button orange"
+             href="https://www.youtube.com/"
+             target="_blank" rel="noopener noreferrer">
+            Visit YouTube
+          </a>
+        </div>
+        <p style="color:#64766b;font-size:.9rem">
+          Replace the YouTube link with your exact channel URL when ready.
+        </p>
+      </div>
+    </section>
+
+    <section class="tropical" id="news">
+      <div class="container">
+        <div class="section-intro">
+          <span class="pill">LATEST UPDATES</span>
+          <h2>Zoo News</h2>
+          <p>
+            Updates about the development of WildWorld Zoo will appear here.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80"
+              alt="A green forest">
+            <div>
+              <span class="pill">PROJECT UPDATE</span>
+              <h3>A new chapter begins</h3>
+              <p>WildWorld Zoo begins its journey with a new identity.</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80"
+              alt="Deer in a woodland">
+            <div>
+              <span class="pill">OUR VISION</span>
+              <h3>A zoo built around nature</h3>
+              <p>Naturalistic design and wildlife education inspire the project.</p>
+            </div>
+          </article>
+          <article class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80"
+              alt="Sunlit green woodland">
+            <div>
+              <span class="pill">COMING SOON</span>
+              <h3>More updates ahead</h3>
+              <p>New announcements will be added as the zoo develops.</p>
+            </div>
+          </article>
+        </div>
+        <p style="color:#64766b;font-size:.9rem">
+          These are starter news cards, not dated announcements. Edit or
+          replace them with your real updates.
+        </p>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container two-column">
+        <div>
+          <span class="pill">PLAN YOUR VISIT</span>
+          <h2>Welcome to our world.</h2>
+          <p>
+            WildWorld Zoo is currently presented as a Planet Zoo 2 creative
+            project. This website is a project showcase, not a real-world
+            ticketing or booking service.
+          </p>
+          <p>
+            More visitor information can be added if you decide to create
+            fictional opening times, a map or a visitor guide.
+          </p>
+        </div>
+        <div class="soft-card">
+          <h3>Visitor information</h3>
+          <p><strong>Location:</strong> To be announced</p>
+          <p><strong>Opening times:</strong> To be announced</p>
+          <p><strong>Tickets:</strong> Not currently available</p>
+          <p><strong>Zoo map:</strong> Coming in a future update</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#home" style="color:white">
+            <span class="logo">🦌</span>
+            <span>WildWorld Zoo</span>
+          </a>
+          <p>
+            A Better World For All Living Creatures.
+          </p>
+          <p>A creative Planet Zoo 2 project.</p>
+        </div>
+
+        <div>
+          <h3>Explore</h3>
+          <div class="footer-links">
+            <a href="#story">Our Story</a>
+            <a href="#animals">Animals</a>
+            <a href="#conservation">Conservation</a>
+            <a href="#staff">Our Team</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Follow Along</h3>
+          <div class="footer-links">
+            <a href="#youtube">YouTube</a>
+            <a href="#news">Zoo News</a>
+            <a href="#visit">Visitor Information</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> WildWorld Zoo. A creative zoo project.
+        Planet Zoo 2 is a game by its respective publisher; this is an
+        independent fan project.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
