@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08764b">
-  <meta name="description" content="WildWorld Zoo — A Better World For All Living Creatures. Discover our story, conservation mission and visitor experience.">
+  <meta name="description" content="WildWorld Zoo — A Better World For All Living Creatures. Discover our animals, conservation mission and visitor experience.">
   <title>WildWorld Zoo | A Better World For All Living Creatures</title>
 
   <style>
@@ -295,6 +294,59 @@
       background: #ffffff70;
     }
 
+    /* Red Deer animal card */
+    .animal-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--lime);
+    }
+
+    .animal-image {
+      display: block;
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .animal-content {
+      padding: 28px;
+    }
+
+    .animal-content h3 {
+      color: var(--deep-green);
+      margin: 28px 0 8px;
+    }
+
+    .animal-content h3:first-of-type {
+      margin-top: 24px;
+    }
+
+    .animal-content p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .animal-fact {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .animal-fact div {
+      background: #f2f8e9;
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .animal-fact strong {
+      display: block;
+      color: var(--deep-green);
+    }
+
     .staff-card {
       text-align: center;
       background: white;
@@ -348,6 +400,7 @@
     }
 
     footer a { color: #d8f49c; }
+
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -355,6 +408,7 @@
     }
 
     .footer-links { display: grid; gap: 8px; }
+
     .copyright {
       margin-top: 30px;
       padding-top: 18px;
@@ -375,6 +429,8 @@
       section { padding: 55px 0; }
       .photo { min-height: 230px; }
       .youtube-band { padding: 25px; }
+      .animal-content { padding: 22px; }
+      .animal-fact { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -589,9 +645,95 @@
       </div>
     </section>
 
-    <!-- ANIMALS SECTION INTENTIONALLY LEFT BLANK.
-         Add animal content here whenever you are ready. -->
-    <section id="animals" aria-label="Animals">
+    <!-- ANIMALS SECTION -->
+    <section id="animals" class="tropical" aria-label="Animals">
+      <div class="container">
+        <div class="section-intro">
+          <span class="pill">MEET OUR WILDLIFE</span>
+          <h2>Our Animals</h2>
+          <p>
+            Discover the incredible animals that call WildWorld Zoo home.
+            Every species has its own story, and this is where their
+            journeys begin.
+          </p>
+        </div>
+
+        <article class="animal-card">
+          <img
+            class="animal-image"
+            src="1a1788b2af965-screenshotUrl.jpg"
+            alt="Red Deer in their WildWorld Zoo habitat">
+
+          <div class="animal-content">
+            <span class="pill">OUR CENTREPIECE</span>
+            <h2 style="margin-top:14px">Red Deer</h2>
+
+            <p>
+              The Red Deer holds a special place at WildWorld Zoo.
+              As our centrepiece species, these magnificent deer represent
+              our passion for wildlife and the natural world.
+            </p>
+
+            <div class="animal-fact">
+              <div>
+                <strong>Scientific name</strong>
+                Cervus elaphus
+              </div>
+              <div>
+                <strong>Diet</strong>
+                Herbivore
+              </div>
+              <div>
+                <strong>Animal group</strong>
+                Mammal
+              </div>
+              <div>
+                <strong>Conservation status</strong>
+                Least Concern globally
+              </div>
+            </div>
+
+            <h3>Habitat and Natural Range</h3>
+            <p>
+              Red Deer live across parts of Europe, Asia and North Africa.
+              They inhabit a variety of environments, including woodlands,
+              grasslands, heathlands and mountainous regions. They can use
+              forests for shelter and open areas for feeding.
+            </p>
+
+            <h3>Diet</h3>
+            <p>
+              Red Deer are herbivores. They feed on grasses, leaves, herbs,
+              shoots and other vegetation. Their diet changes with the
+              seasons and the food available in their environment.
+            </p>
+
+            <h3>Behaviour</h3>
+            <p>
+              Red Deer are social animals. Females and their young often
+              form groups, while males may form separate groups outside
+              the breeding season. During autumn, males enter the rut,
+              roaring and competing with rivals for access to females.
+            </p>
+
+            <h3>Conservation</h3>
+            <p>
+              Red Deer are classified as Least Concern globally by the
+              International Union for Conservation of Nature (IUCN).
+              However, individual populations can face local pressures
+              from habitat changes, hunting and conflicts with human
+              activities. Protecting suitable habitats helps support
+              healthy populations.
+            </p>
+
+            <p>
+              At WildWorld Zoo, our Red Deer help us celebrate the
+              importance of understanding wildlife and respecting the
+              natural environments animals depend on.
+            </p>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section id="staff" class="tropical">
@@ -622,6 +764,7 @@
             <p>Daily care, enrichment and habitat management.</p>
           </article>
         </div>
+
         <p style="margin-top:20px;color:#64766b">
           These are role categories, not named staff profiles. Names and
           biographies can be added later.
@@ -662,6 +805,7 @@
             Updates about the development of WildWorld Zoo will appear here.
           </p>
         </div>
+
         <div class="feature-grid">
           <article class="news-card">
             <img
@@ -673,6 +817,7 @@
               <p>WildWorld Zoo begins its journey with a new identity.</p>
             </div>
           </article>
+
           <article class="news-card">
             <img
               src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=700&q=80"
@@ -683,6 +828,7 @@
               <p>Naturalistic design and wildlife education inspire the project.</p>
             </div>
           </article>
+
           <article class="news-card">
             <img
               src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=700&q=80"
@@ -694,6 +840,7 @@
             </div>
           </article>
         </div>
+
         <p style="color:#64766b;font-size:.9rem">
           These are starter news cards, not dated announcements. Edit or
           replace them with your real updates.
@@ -716,6 +863,7 @@
             fictional opening times, a map or a visitor guide.
           </p>
         </div>
+
         <div class="soft-card">
           <h3>Visitor information</h3>
           <p><strong>Location:</strong> To be announced</p>
@@ -735,9 +883,7 @@
             <span class="logo">🦌</span>
             <span>WildWorld Zoo</span>
           </a>
-          <p>
-            A Better World For All Living Creatures.
-          </p>
+          <p>A Better World For All Living Creatures.</p>
           <p>A creative Planet Zoo 2 project.</p>
         </div>
 
@@ -775,3 +921,6 @@
   </script>
 </body>
 </html>
+
+
+
